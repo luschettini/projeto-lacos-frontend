@@ -2,20 +2,84 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import PetCard from '../components/PetCard.jsx';
 
 export default function Home() {
   const [featuredPets, setFeaturedPets] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Função para converter dados da API para formato do frontend
+  const mapApiDataToFrontend = (apiData) => {
+    return apiData.map(pet => ({
+      id: pet.id,
+      nome: pet.name,
+      especie: pet.species === 'cachorro' ? 'Cão' : pet.species === 'gato' ? 'Gato' : pet.species,
+      porte: pet.size === 'pequeno' ? 'Pequeno' : 
+             pet.size === 'medio' ? 'Médio' : 
+             pet.size === 'grande' ? 'Grande' : pet.size,
+      sexo: pet.gender === 'macho' ? 'Macho' : 
+            pet.gender === 'femea' ? 'Fêmea' : pet.gender,
+      idade: pet.age_category === 'filhote' ? 'Filhote' :
+             pet.age_category === 'adulto' ? 'Adulto' :
+             pet.age_category === 'idoso' ? 'Idoso' : pet.age_category,
+      descricao: pet.description || 'Sem descrição disponível',
+      localizacao: pet.owner_city || 'Localização não informada',
+      fotos: pet.photo_url ? [pet.photo_url] : [],
+      vacinado: pet.is_vaccinated,
+      castrado: pet.is_neutered,
+      raca: pet.breed || 'SRD',
+      personalidade: pet.personality,
+      historicoMedico: pet.medical_history,
+      necessidadesEspeciais: pet.special_needs,
+      historiaResgate: pet.rescue_story,
+      protetor: {
+        nome: pet.owner_name,
+        telefone: pet.owner_phone,
+        cidade: pet.owner_city
+      }
+    }));
+  };
+
   useEffect(() => {
     const fetchFeaturedPets = async () => {
       try {
-        const response = await fetch('http://localhost:3002/api/pets?limit=3');
-        const data = await response.json();
-        setFeaturedPets(data);
+        console.log('Buscando pets em destaque...');
+        
+        const response = await fetch('http://localhost:3002/api/animals/featured', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        
+        const apiData = await response.json();
+        console.log('Dados brutos da API:', apiData);
+        
+        if (Array.isArray(apiData) && apiData.length > 0) {
+          const mappedData = mapApiDataToFrontend(apiData);
+          console.log('Dados mapeados:', mappedData);
+          setFeaturedPets(mappedData);
+        } else {
+          console.log('API não retornou pets featured, tentando buscar todos...');
+          // Se não tiver featured, pegar os primeiros 3 da lista geral
+          const allResponse = await fetch('http://localhost:3002/api/animals');
+          const allData = await response.json();
+          
+          if (Array.isArray(allData)) {
+            const mappedData = mapApiDataToFrontend(allData.slice(0, 3));
+            setFeaturedPets(mappedData);
+          }
+        }
+        
       } catch (error) {
-        console.error('Erro ao buscar pets em destaque:', error);
+        console.error('Erro ao buscar pets:', error);
+        setFeaturedPets([]);
       } finally {
         setLoading(false);
       }
@@ -25,7 +89,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
@@ -115,35 +179,21 @@ export default function Home() {
             </div>
           ) : (
             <div className="grid md:grid-cols-3 gap-8">
-              {featuredPets.map((pet) => (
-                <div key={pet.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="h-48 bg-gray-200 relative">
-                    {pet.fotos && pet.fotos[0] ? (
-                      <Image
-                        src={pet.fotos[0]}
-                        alt={pet.nome}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="flex items-center justify-center h-full text-gray-400">
-                        <span className="text-4xl">🐾</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{pet.nome}</h3>
-                    <p className="text-gray-600 mb-2">{pet.especie} • {pet.porte}</p>
-                    <p className="text-gray-500 text-sm mb-4 line-clamp-2">{pet.descricao}</p>
-                    <Link 
-                      href={`/detalhes/${pet.id}`}
-                      className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors"
-                    >
-                      Conhecer {pet.nome}
-                    </Link>
-                  </div>
+              {Array.isArray(featuredPets) && featuredPets.length > 0 ? (
+                featuredPets.map((pet) => (
+                  <PetCard key={pet.id} pet={pet} />
+                ))
+              ) : (
+                <div className="col-span-3 text-center">
+                  <span className="text-6xl">🐾</span>
+                  <h3 className="text-xl font-semibold text-gray-800 mt-4">
+                    Carregando pets da API...
+                  </h3>
+                  <p className="text-gray-600 mt-2">
+                    Os dados estão sendo processados
+                  </p>
                 </div>
-              ))}
+              )}
             </div>
           )}
           
@@ -173,6 +223,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
