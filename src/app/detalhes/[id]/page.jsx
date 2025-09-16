@@ -88,7 +88,7 @@ export default function DetalhesAnimal() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
           <p className="mt-4 text-gray-600 text-lg">Carregando informações do animal...</p>
         </div>
       </div>
@@ -105,13 +105,13 @@ export default function DetalhesAnimal() {
           <div className="mt-6 space-x-4">
             <Link 
               href="/listagem"
-              className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              className="inline-block bg-primary-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors shadow-md hover:shadow-lg"
             >
               Ver Outros Animais
             </Link>
             <button
               onClick={() => window.location.reload()}
-              className="inline-block border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="inline-block border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors shadow-sm"
             >
               Tentar Novamente
             </button>
@@ -133,9 +133,9 @@ export default function DetalhesAnimal() {
         {/* Breadcrumb */}
         <nav className="mb-6">
           <div className="flex items-center space-x-2 text-sm text-gray-500">
-            <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-primary-600 transition-colors">Home</Link>
             <span>›</span>
-            <Link href="/listagem" className="hover:text-blue-600 transition-colors">Animais</Link>
+            <Link href="/listagem" className="hover:text-primary-600 transition-colors">Animais</Link>
             <span>›</span>
             <span className="text-gray-800 font-medium">{animal.nome}</span>
           </div>
@@ -178,7 +178,7 @@ export default function DetalhesAnimal() {
               <div className="mb-6">
                 <h1 className="text-3xl font-bold text-gray-800 mb-3">{animal.nome}</h1>
                 <div className="flex flex-wrap items-center gap-3 text-sm">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
+                  <span className="bg-secondary-100 text-secondary-800 px-3 py-1 rounded-full font-medium">
                     {animal.especie}
                   </span>
                   <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-medium">
@@ -282,7 +282,7 @@ export default function DetalhesAnimal() {
                 {animal.disponivel && animal.protetor?.telefone && (
                   <button 
                     onClick={handleContact}
-                    className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center"
+                    className="w-full bg-green-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-600 transition-colors flex items-center justify-center shadow-md hover:shadow-lg"
                   >
                     <span className="mr-2">💬</span>
                     Entrar em Contato via WhatsApp
@@ -302,7 +302,7 @@ export default function DetalhesAnimal() {
                       alert('Link copiado para a área de transferência!');
                     }
                   }}
-                  className="w-full border border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center"
+                  className="w-full border border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-50 transition-colors flex items-center justify-center shadow-sm"
                 >
                   <span className="mr-2">📤</span>
                   Compartilhar
@@ -316,7 +316,7 @@ export default function DetalhesAnimal() {
         <div className="mt-8 text-center">
           <Link 
             href="/listagem"
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+            className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium transition-colors"
           >
             <span className="mr-1">←</span>
             Voltar para lista de animais

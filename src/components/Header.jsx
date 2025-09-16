@@ -11,6 +11,7 @@ export default function Header() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/listagem', label: 'Pets para Adoção' },
+    { href: '/depoimentos', label: 'Depoimentos' },
     { href: '/sobre-mim', label: 'Sobre Nós' },
     { href: '/contato', label: 'Contato' },
   ];
@@ -26,7 +27,7 @@ export default function Header() {
     <header className="bg-white shadow-sm border-b sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
+          <Link href="/" className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors">
             🐾 Laços de Pata
           </Link>
           
@@ -38,8 +39,8 @@ export default function Header() {
                 href={link.href} 
                 className={`transition-colors ${
                   isActive(link.href) 
-                    ? 'text-blue-600 font-semibold' 
-                    : 'text-gray-600 hover:text-blue-600'
+                    ? 'text-primary-600 font-semibold' 
+                    : 'text-gray-600 hover:text-primary-600'
                 }`}
               >
                 {link.label}
@@ -50,7 +51,7 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <Link 
               href="/contato" 
-              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors"
+              className="bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-700 transition-colors"
             >
               Seja um Protetor
             </Link>
@@ -80,8 +81,8 @@ export default function Header() {
                   href={link.href} 
                   className={`transition-colors ${
                     isActive(link.href) 
-                      ? 'text-blue-600 font-semibold' 
-                      : 'text-gray-600 hover:text-blue-600'
+                      ? 'text-primary-600 font-semibold' 
+                      : 'text-gray-600 hover:text-primary-600'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >

@@ -232,7 +232,7 @@ export default function Listagem() {
                 <select
                   value={filters.especie}
                   onChange={(e) => handleFilterChange('especie', e.target.value)}
-                  className="w-full p-3 pl-4 pr-10 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-300 transition-all duration-200 cursor-pointer"
+                  className="w-full p-3 pl-4 pr-10 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300 transition-all duration-200 cursor-pointer"
                 >
                   <option value="">Todas as espécies</option>
                   <option value="Cão">🐕 Cão</option>
@@ -255,7 +255,7 @@ export default function Listagem() {
                 <select
                   value={filters.porte}
                   onChange={(e) => handleFilterChange('porte', e.target.value)}
-                  className="w-full p-3 pl-4 pr-10 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-300 transition-all duration-200 cursor-pointer"
+                  className="w-full p-3 pl-4 pr-10 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300 transition-all duration-200 cursor-pointer"
                 >
                   <option value="">Todos os portes</option>
                   <option value="Pequeno">🐕‍🦺 Pequeno</option>
@@ -279,7 +279,7 @@ export default function Listagem() {
                 <select
                   value={filters.sexo}
                   onChange={(e) => handleFilterChange('sexo', e.target.value)}
-                  className="w-full p-3 pl-4 pr-10 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-300 transition-all duration-200 cursor-pointer"
+                  className="w-full p-3 pl-4 pr-10 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300 transition-all duration-200 cursor-pointer"
                 >
                   <option value="">Todos</option>
                   <option value="Macho">♂️ Macho</option>
@@ -304,7 +304,7 @@ export default function Listagem() {
                   placeholder="Digite a cidade..."
                   value={filters.localizacao}
                   onChange={(e) => handleFilterChange('localizacao', e.target.value)}
-                  className="w-full p-3 pl-10 pr-4 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-gray-300 transition-all duration-200"
+                  className="w-full p-3 pl-10 pr-4 text-gray-700 bg-gray-50 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300 transition-all duration-200"
                 />
                 <div className="absolute inset-y-0 left-0 flex items-center px-3 pointer-events-none">
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -319,7 +319,7 @@ export default function Listagem() {
           {/* Informações dos filtros e botão limpar */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-4 border-t border-gray-100">
             <div className="flex items-center text-sm text-gray-600">
-              <span className="font-medium text-blue-600 mr-1">
+              <span className="font-medium text-primary-600 mr-1">
                 {filteredPets.length}
               </span>
               <span>
@@ -333,7 +333,7 @@ export default function Listagem() {
             {(filters.especie || filters.porte || filters.sexo || filters.localizacao) && (
               <button
                 onClick={clearFilters}
-                className="flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-all duration-200 hover:scale-105"
+                className="flex items-center px-4 py-2 text-sm font-medium text-primary-500 bg-primary-50 hover:bg-primary-100 rounded-lg transition-all duration-200 hover:scale-105 shadow-sm"
               >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -348,7 +348,7 @@ export default function Listagem() {
         <div className="mb-8">
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
               <p className="mt-2 text-gray-600">Carregando animais...</p>
             </div>
           ) : (
@@ -376,7 +376,7 @@ export default function Listagem() {
                   {(filters.especie || filters.porte || filters.sexo || filters.localizacao) && !error && (
                     <button
                       onClick={clearFilters}
-                      className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+                      className="mt-4 bg-primary-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors shadow-md hover:shadow-lg"
                     >
                       Ver todos os animais
                     </button>

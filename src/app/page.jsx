@@ -89,9 +89,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-accent-50 to-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+      <section className="relative bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
             Laços de Pata 🐾
@@ -103,13 +103,13 @@ export default function Home() {
           <div className="space-x-4">
             <Link 
               href="/listagem" 
-              className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-primary-500 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
             >
               Ver Animais para Adoção
             </Link>
             <Link 
               href="/contato" 
-              className="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-500 transition-colors shadow-md hover:shadow-lg"
             >
               Seja um Protetor
             </Link>
@@ -130,7 +130,7 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🏠</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Adoção Responsável</h3>
@@ -140,7 +140,7 @@ export default function Home() {
             </div>
             
             <div className="text-center p-6">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-accent-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">❤️</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Conexões Seguras</h3>
@@ -150,7 +150,7 @@ export default function Home() {
             </div>
             
             <div className="text-center p-6">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-secondary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🐕</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Segunda Chance</h3>
@@ -163,53 +163,66 @@ export default function Home() {
       </section>
 
       {/* Featured Pets Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Pets em Destaque</h2>
-            <p className="text-lg text-gray-600">
-              Conheça alguns dos nossos amiguinhos que estão esperando por você
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6">Pets em Destaque</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Conheça alguns dos nossos amiguinhos que estão esperando por você. Cada um tem uma história única e muito amor para dar.
             </p>
           </div>
           
           {loading ? (
-            <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-              <p className="mt-2 text-gray-600">Carregando pets...</p>
+            <div className="text-center py-16">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 mb-4"></div>
+              <p className="text-gray-600 text-lg">Carregando pets...</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="mb-16">
               {Array.isArray(featuredPets) && featuredPets.length > 0 ? (
-                featuredPets.map((pet) => (
-                  <PetCard key={pet.id} pet={pet} />
-                ))
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                  {featuredPets.map((pet) => (
+                    <PetCard key={pet.id} pet={pet} />
+                  ))}
+                </div>
               ) : (
-                <div className="col-span-3 text-center">
-                  <span className="text-6xl">🐾</span>
-                  <h3 className="text-xl font-semibold text-gray-800 mt-4">
-                    Carregando pets da API...
-                  </h3>
-                  <p className="text-gray-600 mt-2">
-                    Os dados estão sendo processados
-                  </p>
+                <div className="text-center py-16">
+                  <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-12 max-w-md mx-auto">
+                    <span className="text-7xl block mb-4">🐾</span>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      Carregando pets da API...
+                    </h3>
+                    <p className="text-gray-600">
+                      Os dados estão sendo processados
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
           )}
           
-          <div className="text-center mt-12">
-            <Link 
-              href="/listagem"
-              className="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Ver Todos os Animais
-            </Link>
+          {/* Botão centralizado com destaque */}
+          <div className="flex justify-center">
+            <div className="text-center">
+              <Link 
+                href="/listagem"
+                className="inline-flex items-center bg-primary-500 text-white px-10 py-4 rounded-lg font-semibold hover:bg-primary-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Ver Todos os Animais
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </Link>
+              <p className="text-sm text-gray-500 mt-3">
+                Explore nossa galeria completa de animais
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-primary-500 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Pronto para Transformar uma Vida?</h2>
           <p className="text-xl mb-8">
@@ -217,7 +230,7 @@ export default function Home() {
           </p>
           <Link 
             href="/listagem"
-            className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+            className="bg-white text-primary-500 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
           >
             Começar Agora
           </Link>

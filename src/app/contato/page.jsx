@@ -51,7 +51,7 @@ export default function Contato() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+      <section className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4">Entre em Contato</h1>
           <p className="text-xl max-w-2xl mx-auto">
@@ -91,7 +91,7 @@ export default function Contato() {
                     value={formData.nome}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                 </div>
                 
@@ -106,7 +106,7 @@ export default function Contato() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default function Contato() {
                     name="telefone"
                     value={formData.telefone}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   />
                 </div>
                 
@@ -135,7 +135,7 @@ export default function Contato() {
                     name="tipo"
                     value={formData.tipo}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   >
                     <option value="adotante">Interessado em adotar</option>
                     <option value="protetor">Protetor independente</option>
@@ -157,7 +157,7 @@ export default function Contato() {
                   value={formData.assunto}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 />
               </div>
 
@@ -172,7 +172,7 @@ export default function Contato() {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   placeholder="Conte-nos como podemos ajudar..."
                 />
               </div>
@@ -180,7 +180,7 @@ export default function Contato() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-primary-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg"
               >
                 {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
               </button>
@@ -195,8 +195,8 @@ export default function Contato() {
               
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="text-blue-600">📧</span>
+                  <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+                    <span className="text-primary-600">📧</span>
                   </div>
                   <div>
                     <p className="font-medium text-gray-800">Email</p>
@@ -266,14 +266,14 @@ export default function Contato() {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 text-center">
+            <div className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg p-8 text-center">
               <h3 className="text-xl font-semibold mb-3">Quer ser um protetor?</h3>
               <p className="mb-6">
                 Junte-se à nossa rede de protetores e ajude mais animais a encontrarem um lar.
               </p>
               <Link
                 href="/listagem"
-                className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-white text-primary-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors"
               >
                 Conhecer a Plataforma
               </Link>
