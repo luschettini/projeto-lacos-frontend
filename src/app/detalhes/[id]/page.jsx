@@ -66,16 +66,13 @@ export default function DetalhesAnimal() {
         }
 
         const apiData = await response.json();
-        console.log('Dados do animal da API:', apiData);
         
         const mappedData = mapApiDataToFrontend(apiData);
-        console.log('Dados mapeados:', mappedData);
         
         setAnimal(mappedData);
 
       } catch (error) {
-        console.error('Erro ao buscar animal:', error);
-        setError(error.message);
+        setError(error?.message || 'Erro ao carregar dados do animal');
       } finally {
         setLoading(false);
       }

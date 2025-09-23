@@ -90,29 +90,55 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-accent-50 to-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-500 to-secondary-500 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">
-            Laços de Pata 🐾
-          </h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Conectando corações e transformando vidas. Encontre seu novo melhor amigo 
-            e dê uma segunda chance para quem mais precisa de amor.
-          </p>
-          <div className="space-x-4">
-            <Link 
-              href="/listagem" 
-              className="bg-white text-primary-500 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
-            >
-              Ver Animais para Adoção
-            </Link>
-            <Link 
-              href="/contato" 
-              className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-500 transition-colors shadow-md hover:shadow-lg"
-            >
-              Seja um Protetor
-            </Link>
+      {/* Banner de Doação - Fiel ao Design Original */}
+      <section className="bg-gray-100 py-4">
+        <div className="container mx-auto px-4">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl" 
+               style={{
+                 backgroundImage: "linear-gradient(135deg, #f3e8ff 0%, #fef3e2 50%, #f3e8ff 100%)",
+                 minHeight: "350px"
+               }}>
+            <div className="grid lg:grid-cols-2 items-center h-full relative">
+              {/* Lado esquerdo - Texto principal */}
+              <div className="p-8 lg:p-12 z-10">
+                <h1 className="text-5xl lg:text-7xl font-black leading-none">
+                  <span className="block text-purple-700">Faça a</span>
+                  <span className="block text-purple-800">diferença</span>
+                  <span className="block text-purple-600">sem sair</span>
+                  <span className="block text-purple-700">de casa!</span>
+                </h1>
+              </div>
+              
+              {/* Lado direito - Imagem e call-to-action */}
+              <div className="relative h-[350px] lg:h-[400px]">
+                {/* Imagem do cão ocupando todo o espaço */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  style={{
+                    backgroundImage: "url('https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=600&fit=crop&crop=face')"
+                  }}
+                ></div>
+                
+                {/* Conteúdo de texto sobreposto */}
+                <div className="absolute top-6 right-6 lg:top-8 lg:right-8 text-right max-w-xs">
+                  <div className="bg-white/95 backdrop-blur rounded-2xl p-4 lg:p-6 shadow-xl">
+                    <p className="text-sm lg:text-base text-gray-800 leading-relaxed mb-4">
+                      <span className="block mb-1">Se você também acha que todo</span>
+                      <span className="block mb-1">animal de rua merece um lar,</span>
+                      <span className="block mb-1 font-semibold">adote agora e ajude</span>
+                      <span className="block font-semibold">a transformar uma vida!</span>
+                    </p>
+                    
+                    <a 
+                      href="/listagem" 
+                      className="block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 text-center text-sm lg:text-base"
+                    >
+                      ADOTE AGORA
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
