@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost', 'example.com', 'images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'http',

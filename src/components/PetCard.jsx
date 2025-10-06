@@ -7,13 +7,14 @@ export default function PetCard({ pet, showStatus = false }) {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
       {/* Imagem */}
-      <div className="relative h-48 bg-gray-200">
+      <div className="relative h-56 bg-gray-100 overflow-hidden flex items-center justify-center">
         {pet.fotos && pet.fotos[0] ? (
           <Image
-            src={pet.fotos[0]}
+            src={`http://localhost:3002${pet.fotos[0]}`}
             alt={pet.nome || 'Animal'}
             fill
-            className="object-cover"
+            className="object-cover hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="flex items-center justify-center h-full text-gray-400">

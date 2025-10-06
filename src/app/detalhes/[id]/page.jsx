@@ -142,13 +142,15 @@ export default function DetalhesAnimal() {
           <div className="lg:flex">
             {/* Imagem */}
             <div className="lg:w-1/2">
-              <div className="h-96 lg:h-full bg-gray-200 relative">
+              <div className="h-96 lg:h-full bg-gray-100 relative overflow-hidden flex items-center justify-center">
                 {animal.fotos && animal.fotos[0] ? (
                   <Image
-                    src={animal.fotos[0]}
+                    src={`http://localhost:3002${animal.fotos[0]}`}
                     alt={animal.nome}
                     fill
-                    className="object-cover"
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
                   />
                 ) : (
                   <div className="flex items-center justify-center h-full text-gray-400">

@@ -81,14 +81,15 @@ export default function TestimonialCard({ testimonial }) {
           <div className="border-t pt-4">
             <div className="flex items-center space-x-3">
               {/* Foto do animal */}
-              <div className="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+              <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center">
                 {fotoAnimal ? (
                   <Image
-                    src={fotoAnimal}
+                    src={fotoAnimal.startsWith('http') ? fotoAnimal : `http://localhost:3002${fotoAnimal}`}
                     alt={nomeAnimal}
                     width={64}
                     height={64}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    sizes="64px"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       e.currentTarget.nextElementSibling.style.display = 'flex';

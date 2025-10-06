@@ -156,30 +156,30 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
-              <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-primary-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                 <span className="text-2xl">🏠</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Adoção Responsável</h3>
+              <h3 className="text-xl font-semibold mb-2 text-primary-700">Adoção Responsável</h3>
               <p className="text-gray-600">
                 Promovemos adoções conscientes, garantindo o bem-estar dos animais
               </p>
             </div>
             
             <div className="text-center p-6">
-              <div className="bg-accent-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-accent-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                 <span className="text-2xl">❤️</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Conexões Seguras</h3>
+              <h3 className="text-xl font-semibold mb-2 text-accent-700">Conexões Seguras</h3>
               <p className="text-gray-600">
                 Facilitamos o contato entre protetores e adotantes de forma segura
               </p>
             </div>
             
             <div className="text-center p-6">
-              <div className="bg-secondary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-secondary-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                 <span className="text-2xl">🐕</span>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Segunda Chance</h3>
+              <h3 className="text-xl font-semibold mb-2 text-secondary-700">Segunda Chance</h3>
               <p className="text-gray-600">
                 Damos visibilidade a animais resgatados que precisam de um lar
               </p>
@@ -206,7 +206,7 @@ export default function Home() {
           ) : (
             <div className="mb-16">
               {Array.isArray(featuredPets) && featuredPets.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto justify-items-center">
                   {featuredPets.map((pet) => (
                     <PetCard key={pet.id} pet={pet} />
                   ))}
